@@ -10,13 +10,11 @@ function extractLinks(text) {
     let temp;
 
     while( (temp = regex.exec(text)) !== null) {
-        arrayResults.push({[temp[0]]: temp[1]});
+        arrayResults.push({[temp[1]]: temp[2]});
     }
 
     return arrayResults.length == 0 ? "no links" : arrayResults;
 }
-
-
 
 async function getFile(path) {
     const encoding = "utf-8";
@@ -29,4 +27,4 @@ async function getFile(path) {
     }
 }
 
-getFile("arquivos/text.md");
+export default getFile;
