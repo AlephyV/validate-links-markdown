@@ -1,11 +1,11 @@
-import { promises } from "fs";
+import fs from "fs";
 
 function handlingError(error) {
     throw new Error(error);
 }
 
 function extractLinks(text) {
-    const regex =  /\[([^$#\s.\]\[\)\(]*)\]\((https?:\/\/[^\s.#?].[^\s\/]*)*\/?\)/gm;
+    const regex = /\[([^\]]*)\]\((https?:\/\/[^$#\s].[^\s]*)\)/gm;
     const arrayResults = [];
     let temp;
 
@@ -20,11 +20,11 @@ async function getFile(path) {
     const encoding = "utf-8";
 
     try {
-        const text = await promises.readFile(path, encoding);
+        const text = await fs.promises.readFile(path, encoding);
         return extractLinks(text);
     } catch (error) {
         handlingError(error);
     }
 }
 
-export default getFile;
+export {getFile};

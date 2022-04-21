@@ -1,4 +1,3 @@
-import { link } from "fs";
 import fetch from "node-fetch";
 
 function generateArrayLinks(objectLinks) {
@@ -34,4 +33,4 @@ async function validateURLs(objectLinks) {
 }
 
 
-export default validateURLs;
+export {validateURLs};
